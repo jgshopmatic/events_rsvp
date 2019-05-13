@@ -28,15 +28,14 @@ namespace :import do
                                status: event_status }
                 Event.create!(event_hash)
               end
-      invitees = hash['users#rsvp'].present? ? hash['users#rsvp'].split(';') : []
-      invitees.each do |users|
+      invitations = hash['users#rsvp'].present? ? hash['users#rsvp'].split(';') : []
+      invitations.each do |users|
         user_rsvp = users.split('#') unless users.blank?
         next if user_rsvp.empty? || User.find_by_username(user_rsvp[0]).nil?
-
         invitation = { event_id: event.id,
-                       user_id: User.find_by_username(user_rsvp[0]),
+                       user_id: User.find_by_username(user_rsvp[0]).id,
                        rsvp: user_rsvp[1] }
-        Invitee.create!(invitation)
+        Invitation.create!(invitation)
       end
     end
   end

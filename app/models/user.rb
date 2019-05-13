@@ -1,4 +1,3 @@
 class User < ApplicationRecord
-  has_many   :events, dependent: :destroy
-
+  has_many :invitations, dependent: :destroy
 end

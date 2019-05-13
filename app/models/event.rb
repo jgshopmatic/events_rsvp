@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  has_many :invitees, dependent: :destroy
+  has_many :invitations, dependent: :destroy
   enum status: {
     coming_up: 0,
     in_progress: 1,

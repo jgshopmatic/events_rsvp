@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_05_13_053049) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "invitees", force: :cascade do |t|
+  create_table "invitations", force: :cascade do |t|
     t.integer "event_id"
     t.integer "user_id"
     t.string "rsvp"
